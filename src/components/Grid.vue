@@ -10,7 +10,7 @@
         id="0"
       >
         <template v-slot:content>
-          Root Node
+          Gamora vs. Hawkeye
         </template>
       </node>
     </div>
@@ -21,7 +21,16 @@
         id="1"
       >
         <template v-slot:content>
-          Node 1
+          Black Widow
+        </template>
+
+        <template v-slot:expand>
+          <ul>
+            <li>Expert tactician</li>
+            <li>hand-to-hand combatant and secret agent</li>
+            <li>Slowed aging and enhanced immune system</li>
+            <li>Expert marksman and mastery of various other weapons</li>
+          </ul>
         </template>
       </node>
 
@@ -30,7 +39,15 @@
         id="2"
       >
         <template v-slot:content>
-          Node 2
+          Gamora
+        </template>
+
+        <template v-slot:expand>
+          <ul>
+            <li>Superhuman strength, speed, agility, and durability</li>
+            <li>Skilled assassin</li>
+            <li>Skilled hand-to-hand combatant</li>
+          </ul>
         </template>
       </node>
     </div>
@@ -41,18 +58,36 @@
         id="3"
       >
         <template v-slot:content>
-          Node 3
+          Hawkeye
+        </template>
+
+        <template v-slot:expand>
+          <ul>
+            <li>Master Archer</li>
+            <li>Expert Marksman, possesses very keen eyesight</li>
+            <li>Master Martial Artist</li>
+            <li>Weapons Proficiency</li>
+          </ul>
         </template>
       </node>
 
-      <!-- <node
+      <node
         side="right"
         id="4"
       >
         <template v-slot:content>
-          Node 4
+          Rocket
         </template>
-      </node> -->
+
+        <template v-slot:expand>
+          <ul>
+            <li>Master tactician and field commander</li>
+            <li>Skilled marksman and hand-to-hand combatant</li>
+            <li>Genius-level intellect</li>
+            <li>Normal-physical attributes of an Earth raccoon</li>
+          </ul>
+        </template>
+      </node>
     </div>
 
   </div>
@@ -102,6 +137,12 @@ export default {
       &-full {
         width: 100%;
       }
+    }
+
+    .node {
+      min-width: 150px;
+      max-width: 150px;
+      text-align: center;
     }
   }
 
