@@ -1,28 +1,52 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <wrapper target="#app" />
+
+    <h1 class="page-title">
+      Flow Chart Demo
+    </h1>
+
+    <grid />
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Grid from './components/Grid.vue'
+import Wrapper from './components/Wrapper.vue';
 
 export default {
   name: 'app',
+
   components: {
-    HelloWorld
+    Grid,
+    Wrapper
   }
 }
 </script>
 
 <style lang="scss">
+
+@import '@/assets/scss/core/all.scss';
+
+$app: #f2e7c9;
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  position: relative;
   color: #2c3e50;
   margin-top: 60px;
+  background-color: $app;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  .page-title {
+    font-size: 40px;
+    padding: $pad;
+  }
 }
 </style>
