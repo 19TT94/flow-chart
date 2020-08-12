@@ -242,8 +242,8 @@ export default {
       &-button {
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: 0;
+        width: 90%;
         height: 100%;
       }
 

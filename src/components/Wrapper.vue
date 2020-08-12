@@ -71,12 +71,13 @@ export default {
 
       &-content {
         position: absolute;
-        top: $pad*3;
+        top: $pad*2;
         width: max-content;
         transition: all ease 0.5s;
-        background: $info;
+        background: rgba(0,0,0,0.5);
+        text-align: left;
+        color: $pure-white;
         border-radius: $pad;
-        opacity: 0.6;
         padding: $pad;
         visibility: hidden;  
         transition: all ease 1;

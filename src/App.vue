@@ -8,6 +8,14 @@
 
     <grid />
 
+    <a
+      class="github"
+      href="https://github.com/19tt94"
+      target="_blank"
+    >
+      <img src="@/assets/github.png">
+    </a>
+
   </div>
 </template>
 
@@ -47,6 +55,18 @@ $app: #f2e7c9;
   .page-title {
     font-size: 40px;
     padding: $pad;
+  }
+
+  .github {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: $pad;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 </style>
