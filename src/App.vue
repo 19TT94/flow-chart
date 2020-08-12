@@ -10,7 +10,7 @@
 
     <a
       class="github"
-      href="https://github.com/19tt94"
+      href="https://github.com/19TT94/flow-chart"
       target="_blank"
     >
       <img src="@/assets/github.png">
