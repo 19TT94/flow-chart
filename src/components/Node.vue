@@ -66,8 +66,12 @@ export default {
       default: false
     },
     id: {
-      type: String,
+      type: Number,
       required: true
+    },
+    child: {
+      type: String,
+      default: null
     },
     side: {
       type: String,
@@ -89,30 +93,30 @@ export default {
 
   mounted() {
     if (!this.isRoot) {
-      this.configureFlows();
+      this.configureFlows(this.$el);
       window.addEventListener("resize", this.handle);
     }
   },
 
   destroyed() {
-    window.removeEventListener("resize", this.configureFlows());
+    window.removeEventListener("resize", this.configureFlows(this.$el));
   },
 
   methods: {
     handle() {
-      this.configureFlows();
+      this.configureFlows(this.$el);
     },
-    configureFlows() {
+    configureFlows(node) {
       this.root =  document.querySelector('.root');
       let rootH = this.root.offsetHeight; // height of root card with padding
       let rootW = this.root.offsetWidth; // width of root card with padding
       let rootY = this.root.getBoundingClientRect().top; // height from node to top of viewport
       let rootX = this.root.getBoundingClientRect().left; // height from left of viewport to node
 
-      let nodeH = this.$el.offsetHeight; // height of root card with padding
-      let nodeW = this.$el.offsetWidth; // height of root card with padding
-      let nodeY = this.$el.getBoundingClientRect().top; // height from node to top of viewport
-      let nodeX = this.$el.getBoundingClientRect().left; // hieght from left of viewport to node
+      let nodeH = node.offsetHeight; // height of root card with padding
+      let nodeW = node.offsetWidth; // height of root card with padding
+      let nodeY = node.getBoundingClientRect().top; // height from node to top of viewport
+      let nodeX = node.getBoundingClientRect().left; // hieght from left of viewport to node
 
       this.topHeight = nodeY - (rootY + rootH);
       // console.log(`(Top Height) ${this.topHeight} = (nY) ${nodeY} - ((rY) ${rootY} + (rH) ${rootH})`);
@@ -121,13 +125,13 @@ export default {
       // console.log(`(Bottom Height) ${this.bottomHeight} = ((nY) ${nodeY} + (nH) ${nodeH}) - ((rY) ${rootY} + (rH) ${rootH})`);
 
 
-      let left = this.$el.classList.contains('node-left');
+      let left = node.classList.contains('node-left');
       if (left || this.side === 'left') {
         this.nodeWidth = rootX - (nodeX + nodeW);
         // console.log(`(Line Width) ${this.nodeWidth} = (rX) ${rootX} - ((nX) ${nodeX} + (nW) ${nodeW})`);
       }
 
-      let right = this.$el.classList.contains('node-right');
+      let right = node.classList.contains('node-right');
       if (right || this.side === 'right') {
         this.nodeWidth = (nodeX) - (rootX + rootW);
         // console.log(`(Line Width) ${this.nodeWidth} = (nX) ${nodeX} - ((rX) ${rootX} + (nW) ${rootW})`);
@@ -139,8 +143,11 @@ export default {
     },
     expand() {
       this.expanded = !this.expanded;
+      this.configureChildFlows(this);
+    },
+    configureChildFlows(node) {
       setTimeout(() => {
-        this.configureFlows();
+        this.configureFlows(node.$el);
       }, 1);
     }
   }

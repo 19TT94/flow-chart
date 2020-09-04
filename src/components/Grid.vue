@@ -5,9 +5,10 @@
     <!-- Root -->
     <div class="col col-full">
       <node
+        ref="root"
         class="root" 
         :isRoot="true"
-        id="0"
+        :id="0"
       >
         <template v-slot:content>
           Gamora vs. Hawkeye
@@ -17,8 +18,10 @@
 
     <div class="col">
       <node
+        ref="node1"
         side="left"
-        id="1"
+        :id="1"
+        child="node2"
       >
         <template v-slot:content>
           Black Widow
@@ -35,8 +38,9 @@
       </node>
 
       <node
+        ref="node2"
         side="left"
-        id="2"
+        :id="2"
       >
         <template v-slot:content>
           Gamora
@@ -54,8 +58,10 @@
 
     <div class="col">
       <node
+        ref="node3"
         side="right"
-        id="3"
+        :id="3"
+        child="node2"
       >
         <template v-slot:content>
           Hawkeye
@@ -72,8 +78,9 @@
       </node>
 
       <node
+        ref="node4"
         side="right"
-        id="4"
+        :id="4"
       >
         <template v-slot:content>
           Rocket
